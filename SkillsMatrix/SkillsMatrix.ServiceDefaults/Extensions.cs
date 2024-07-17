@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using System.Runtime.CompilerServices;
 
 namespace Microsoft.Extensions.Hosting;
 
@@ -108,4 +109,5 @@ public static class Extensions
 
         return app;
     }
+
 }
