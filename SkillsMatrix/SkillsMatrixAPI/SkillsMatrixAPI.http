@@ -1,0 +1,6 @@
+@SkillsMatrixAPI_HostAddress = http://localhost:5095
+
+GET {{SkillsMatrixAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
