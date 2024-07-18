@@ -7,16 +7,19 @@ namespace SkillsMatrixAPI.Controllers
     public class CategoryController : Controller
     {
         private readonly CategoryService _categoryService;
+        private readonly ILogger<CategoryController> _logger;
 
-        public CategoryController(CategoryService categoryService)
+        public CategoryController(CategoryService categoryService, ILogger<CategoryController> logger)
         {
             _categoryService = categoryService;
+            _logger = logger;
         }
 
-        public IActionResult GetCategories()
+        public IEnumerable<Category> GetCategories()
         {
-            var category = _categoryService.GetAll();
-            return View(category);
+            _logger.LogDebug("Get categories Called.");
+            var category = await _categoryService.Get();
+            return category;
         }
 
         public IActionResult GetCategory(int id)

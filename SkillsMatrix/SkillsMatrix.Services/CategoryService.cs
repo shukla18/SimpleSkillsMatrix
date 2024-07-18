@@ -17,17 +17,17 @@ namespace SkillsMatrix.Services
             _repository = repository;
         }
 
-        public async Task Add(Category category)
+        public async Task AddAsync(Category category)
         {
             await _repository.AddAsync(category);
         }
 
-        public async Task<IEnumerable<Category>> GetAll()
+        public async Task<IEnumerable<Category>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }
 
-        public async Task<Category> GetById(int id)
+        public async Task<Category> GetByIdAsync(int id)
         {
             return await _repository.GetAsync(id);
         }
