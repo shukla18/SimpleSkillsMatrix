@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using SkillsMatrix.Models;
 using SkillsMatrix.Repository;
 using SkillsMatrix.Services;
@@ -41,6 +42,12 @@ public class Startup
         //services.AddTransient<SkillService>();
 
         services.AddControllers();
+
+        // Add Swagger services
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Skills API", Version = "v1" });
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,6 +60,18 @@ public class Startup
         app.UseHttpsRedirection();
         app.UseRouting();
         app.UseAuthorization();
+
+        // Enable middleware to serve generated Swagger as a JSON endpoint.
+        app.UseSwagger();
+
+        // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+        // specifying the Swagger JSON endpoint.
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Skills API V1");
+            c.RoutePrefix = string.Empty; // To serve Swagger UI at application's root (http://localhost:<port>/)
+        });
+
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();

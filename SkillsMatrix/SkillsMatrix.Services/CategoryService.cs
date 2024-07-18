@@ -26,5 +26,10 @@ namespace SkillsMatrix.Services
         {
             return await _repository.GetAllAsync();
         }
+
+        public async Task<Category> GetById(int id)
+        {
+            return await _repository.GetAsync(id);
+        }
     }
 }

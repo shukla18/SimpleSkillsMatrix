@@ -10,10 +10,10 @@ namespace SkillsMatrix.Repository
 {
     public class EfRepository<T> : IRepository<T> where T : class
     {
-        private readonly DbContext dbContext;
+        private readonly ApplicationDbContext dbContext;
         private readonly DbSet<T> dbSet;
 
-        public EfRepository(DbContext dbContext)
+        public EfRepository(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
             dbSet = dbContext.Set<T>();
